@@ -28,6 +28,10 @@ def b64encode_filter(data):
 # Home route
 @app.route('/')
 def index():
+    return render_template('homepg.html')
+
+@app.route('/ui')
+def ui():
     return render_template('ui.html')
 
 # Categories route
@@ -93,29 +97,54 @@ def classify_image(image_data):
     # Simulate categorization (you can replace this with real logic)
     return 'dress'  # For now, always return 'shirt' as the category
 
-# Route to mark an image as favorite
-@app.route('/favorite/<int:image_id>', methods=['POST'])
+# Route to view favorite images
+@app.route('/favorites')
+def view_favorites():
+    favorites = Image.query.filter_by(is_favorite=True).all()  # Fetch favorite images
+    return render_template('favorites.html', images=favorites)
+
+# Route to view disliked images
+@app.route('/dislikes')
+def view_dislikes():
+    dislikes = Image.query.filter_by(is_disliked=True).all()  # Fetch disliked images
+    return render_template('dislikes.html', images=dislikes)
+
+@app.route('/favorites/<int:image_id>', methods=['POST'])
 def favorite_image(image_id):
     image = Image.query.get_or_404(image_id)
-    try:
-        image.is_favorite = True
-        db.session.commit()
-        return 'Image added to favorites.'
-    except:
-        db.session.rollback()
-        return 'Failed to favorite the image.'
+    image.is_favorite = True
+    db.session.commit()
+    return 'Image added to favorites.'
 
-# Route to mark an image as disliked
-@app.route('/dislike/<int:image_id>', methods=['POST'])
+@app.route('/dislikes/<int:image_id>', methods=['POST'])
 def dislike_image(image_id):
     image = Image.query.get_or_404(image_id)
+    image.is_disliked = True
+    db.session.commit()
+    return 'Image marked as disliked.'
+
+@app.route('/remove_dislike/<int:image_id>', methods=['POST'])
+def remove_dislike(image_id):
+    image_to_remove = Image.query.get_or_404(image_id)
     try:
-        image.is_disliked = True
+        image_to_remove.is_disliked = False
         db.session.commit()
-        return 'Image marked as disliked.'
+        return 'Image removed from dislike list successfully.'
     except:
         db.session.rollback()
-        return 'Failed to mark the image as disliked.'
+        return 'There was a problem removing the image from the dislike list.'
+
+@app.route('/remove_favorite/<int:image_id>', methods=['POST'])
+def remove_favorite(image_id):
+    image_to_remove = Image.query.get_or_404(image_id)
+    try:
+        image_to_remove.is_favorite = False
+        db.session.commit()
+        return 'Image removed from favorite list successfully.'
+    except:
+        db.session.rollback()
+        return 'There was a problem removing the image from the favorite list.'
+
 
 @app.route('/delete/<int:image_id>', methods=['POST'])
 def delete_image(image_id):
