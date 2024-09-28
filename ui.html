@@ -1,116 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Ravi</title>
     <style>
-      * {
-        box-sizing: border-box;
-      }
-      body,
-      html {
-        padding: 0;
-        margin: 0;
-      }
-      .container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        background-color: #dfe6da;
-        min-height: 100vh;
-      }
-      .navigator {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background-color: #cbd5c0;
-        padding: 20px;
-        width: 100%;
-      }
-      .navigator a {
-        text-decoration: none;
-        font-size: 22px;
-        position: relative;
-      }
-      .navigator a::after {
-        content: " ";
-        display: block;
-        margin: auto;
-        height: 2px;
-        transition: 1s;
-      }
-      .navigator a:hover::after {
-        width: 100%;
-        background-color: #0a5c36;
-        margin: auto;
-      }
-      body {
-        background-color: #758467;
-      }
-      h2 {
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 10px;
-      }
-
-      .wardrobe {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-around;
-        font-size: 26px;
-        margin-left: 10px;
-        flex-wrap: wrap;
-        padding: 20px;
-        margin-top: 50px;
-      }
-      .recent,
-      .leastWorn,
-      .worn,
-      .item {
-        flex-basis: 22%;
-        border: 1px solid black;
-        height: 200px;
-        text-align: center;
-        line-height: 32px;
-        background-color: #cbd5c0;
-        border-radius: 20px;
-        padding-top: 20px;
-        margin-right: 10px;
-        margin-bottom: 25px;
-        overflow: hidden;
-      }
+        button {
+            border: none;
+            border-radius: 4px;
+            transition: opacity 0.15s;
+            padding: 20px 20px;
+            margin-top: 200px;
+            margin-left: 50px;
+            font-size: 25px;
+            cursor: pointer;
+            background-color: #A04747;
+            color: #EEDF7A;
+        }
+        button:hover {
+            background-color: #EEDF7A;
+            color: #A04747;
+            opacity: 0.8;
+        }
+        button:active {
+            box-shadow: #A04747;
+        }
+        .h {
+            color: #EEDF7A;
+            font-size: 45px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #343131;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <!-- <h1 class="h">Welcome Ravi, Upload What You're Buying</h1> -->
-      <div class="navigator">
-        <a href=""><div class="nav">Home</div></a>
-        <a href="categories.html"><div class="nav">Categories</div></a>
-        <a href="upload.html"><div class="nav">Add new Item</div></a>
-        <a href=""><div class="nav">Profile</div></a>
-      </div>
-      <h2>Welcome username! Your wardrobe Overview</h2>
-      <div class="wardrobe">
-        <div class="item">
-          Total items: <br />
-          30
+        <h1 class="h">Welcome Ravi, Upload What You're Buying</h1>
+        <div>
+            <center>
+            <button onclick="location.href='categories.html'">View Categories</button>
+            <button class="upload" onclick="location.href='upload.html'">Upload</button>
+            
+            <button class="results" onclick="location.href='results.html'">Results</button>
+            
+            <button class="exit" onclick="exitPage()">Exit</button>
+            </center>
         </div>
-        <div class="worn">
-          Most worn: <br />
-          Black Jeans(10wears), Red T-shirts(7-wears)
-        </div>
-        <div class="leastWorn">
-          Least worn: <br />
-          Blue Jeans(0wears), Grey T-shirts(1-wears)
-        </div>
-        <div class="recent">
-          Recently Added: <br />
-          Blue Hoodie, White Sneakers
-        </div>
-      </div>
     </div>
-  </body>
+
+    <script>
+        function manualAdd() {
+            const category = prompt("Please enter the category of clothing:");
+            if (category) {
+                alert(`${category} has been added manually.`);
+                // You can implement additional functionality here to actually save this data if needed.
+            }
+        }
+        function exitPage() {
+            if (confirm("Are you sure you want to exit?")) {
+                window.close(); // Closes the browser tab if allowed
+            }
+        }
+    </script>
+</body>
 </html>

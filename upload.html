@@ -1,78 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: #dfe6da;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .container {
-        margin-top: 80px;
-      }
-      input[type="file"],
-      select {
-        margin: 20px;
-        padding: 10px;
-        font-size: 18px;
-        border-radius: 4px;
-        background-color: #cbd5c0;
-        margin-bottom: 50px;
-      }
-      h1 {
-        font-size: 36px;
-        margin-bottom: 50px;
-      }
-      button {
-        border: none;
-        border-radius: 4px;
-        transition: opacity 0.15s;
-        padding: 15px 20px;
-        font-size: 20px;
-        cursor: pointer;
-        background-color: #cbd5c0;
-      }
-      button:hover {
-        background-color: #9caf88;
-      }
-      .result {
-        margin-right: 20px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #343131;
+            color: #EEDF7A;
+        }
+        input[type="file"], select {
+            margin: 20px;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 4px;
+            border: 1px solid #EEDF7A;
+            background-color: #A04747;
+            color: #EEDF7A;
+        }
+        button {
+            border: none;
+            border-radius: 4px;
+            transition: opacity 0.15s;
+            padding: 15px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #A04747;
+            color: #EEDF7A;
+        }
+        button:hover {
+            background-color: #EEDF7A;
+            color: #A04747;
+            opacity: 0.8;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Upload Your Image</h1>
-      <form onsubmit="evaluateClothing(); return false;">
-        <input type="file" id="imageUpload" accept="image/*" required />
-        <button type="submit">Submit</button>
-      </form>
-
-      <button class="result" onclick="location.href='results.html'">
-        Result
-      </button>
-      <button onclick="location.href='ui.html'">Back to Home</button>
+        <h1>Upload Your Image</h1>
+        <form onsubmit="evaluateClothing(); return false;">
+            <input type="file" id="imageUpload" accept="image/*" required>
+            <button type="submit">Submit</button>
+        </form>
+        <button onclick="location.href='ui.html'">Back to Home</button>
     </div>
 
     <script>
-      function evaluateClothing() {
-        // This is a placeholder for actual image evaluation logic
-        const ownedClothing = ["shirt.jpg", "pants.jpg"]; // Example owned items
-        const uploadedImage =
-          document.getElementById("imageUpload").files[0].name;
+        function evaluateClothing() {
+            // This is a placeholder for actual image evaluation logic
+            const ownedClothing = ["shirt.jpg", "pants.jpg"]; // Example owned items
+            const uploadedImage = document.getElementById('imageUpload').files[0].name;
 
-        if (ownedClothing.includes(uploadedImage)) {
-          alert("You already own this clothing item. You shouldn't buy it.");
-        } else {
-          alert("This clothing item is unique. You should consider buying it!");
+            if (ownedClothing.includes(uploadedImage)) {
+                alert("You already own this clothing item. You shouldn't buy it.");
+            } else {
+                alert("This clothing item is unique. You should consider buying it!");
+            }
         }
-      }
     </script>
-  </body>
+</body>
 </html>
+

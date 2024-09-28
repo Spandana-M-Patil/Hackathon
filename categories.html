@@ -1,90 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clothing Categories</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: #dfe6da;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-      a {
-        flex-basis: 30%;
-        background-color: #cbd5c0;
-        margin: 10px;
-        padding: 20px;
-        border-radius: 4px;
-        display: inline-block;
-        width: 200px;
-        text-decoration: none;
-        font-size: 20px;
-      }
-      button {
-        border: none;
-        border-radius: 4px;
-        transition: opacity 0.15s;
-        padding: 15px 20px;
-        margin: 20px;
-        font-size: 20px;
-        cursor: pointer;
-        background-color: #cbd5c0;
-      }
-      button:hover {
-        background-color: #9caf88;
-      }
-      .sub {
-        margin-left: 1px;
-      }
-      input {
-        margin-right: 1px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Clothing Categories</h1>
-      <ul>
-        <a href=""> <li>T-Shirt/Top</li></a>
-        <a href=""><li>Trouser</li></a>
-        <a href=""><li>Pullover</li></a>
-        <a href=""> <li>Dress</li></a>
-        <a href=""> <li>Coat</li></a>
-        <a href=""><li>Sandal</li></a>
-        <a href=""> <li>Shirt</li></a>
-        <a href=""> <li>Sneaker</li></a>
-        <a href=""><li>Bag</li></a>
-        <a href=""> <li>Ankle boot</li></a>
-        <!-- Add more categories as needed -->
-      </ul>
-      <div class="bottom">
-        <button>
-          <form action="">
-            <input type="file" />
-            <button class="sub" type="submit">Submit</button>
-          </form>
-        </button>
-        <button onclick="manualAdd()">Manually Add</button>
-        <button onclick="location.href='ui.html'">Back to Home</button>
-      </div>
-    </div>
-    <script>
-      function manualAdd() {
-        const category = prompt("Please enter the category of clothing:");
-        if (category) {
-          alert(`${category} has been added manually.`);
-          // You can implement additional functionality here to actually save this data if needed.
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #343131;
+            color: #EEDF7A;
         }
-      }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #A04747;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            width: 200px;
+        }
+        button {
+            border:none;
+            border-radius:4px;
+            transition: opacity 0.15s;
+            padding: 15px 20px;
+            margin: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #A04747;
+            color: #EEDF7A;
+        }
+        button:hover {
+            background-color: #EEDF7A;
+            color: #A04747;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clothing Categories</h1>
+        <ul>
+            <li>T-Shirt/Top</li>
+            <li>Trouser</li>
+            <li>Pullover</li>
+            <li>Dress</li>
+            <li>Coat</li>
+            <li>Sandal</li>
+            <li>Shirt</li>
+            <li>Sneaker</li>
+            <li>Bag</li>
+            <li>Ankle boot</li>
+            <!-- Add more categories as needed -->
+        </ul>
+        <button onclick="manualAdd()">Manual Add</button>
+        <button onclick="location.href='ui.html'">Back to Home</button>
+    </div>
+
+    <script>
+        function manualAdd() {
+            const category = prompt("Please enter the category of clothing:");
+            if (category) {
+                alert(`${category} has been added manually.`);
+                // You can implement additional functionality here to actually save this data if needed.
+            }
+        }
     </script>
-  </body>
+</body>
 </html>
