@@ -18,7 +18,26 @@
         align-items: center;
         flex-wrap: wrap;
       }
-      a {
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav h1 {
+        margin-left: 420px;
+      }
+      .disl {
+        margin-right: 100px;
+      }
+
+      .nav a {
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+        color: black;
+      }
+
+      ul a {
         flex-basis: 30%;
         background-color: #cbd5c0;
         margin: 10px;
@@ -40,9 +59,11 @@
         cursor: pointer;
         background-color: #cbd5c0;
       }
+
       button:hover {
         background-color: #9caf88;
       }
+
       .sub {
         margin-left: 1px;
       }
@@ -53,7 +74,19 @@
   </head>
   <body>
     <div class="container">
-      <h1>Clothing Categories</h1>
+      <div class="nav">
+        <h1>Clothing Categories</h1>
+        <form action="/favorites">
+          <a href="/favorites" target="_blank" rel="noopener noreferrer"
+            ><h3>Favorite</h3></a
+          >
+        </form>
+        <form action="/dislikes">
+          <a href="/dislikes" target="_blank" rel="noopener noreferrer"
+            ><h3 class="disl">Dislikes</h3></a
+          >
+        </form>
+      </div>
       <ul>
         <a href="/category/tshirt"> <li>T-Shirt/Top</li></a>
         <a href="/category/trouser"><li>Trouser</li></a>
@@ -73,7 +106,7 @@
             <button class="sub" type="submit">Upload</button>
           </form>
         </button>
-        <button onclick="location.href='ui.html'">Back to Home</button>
+        <button onclick="location.href='/ui'">Back to Home</button>
       </div>
     </div>
   </body>
