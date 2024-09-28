@@ -13,14 +13,21 @@
       ul {
         list-style-type: none;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
       }
-      li {
+      a {
+        flex-basis: 30%;
         background-color: #cbd5c0;
         margin: 10px;
-        padding: 10px;
+        padding: 20px;
         border-radius: 4px;
         display: inline-block;
         width: 200px;
+        text-decoration: none;
+        font-size: 20px;
       }
       button {
         border: none;
@@ -35,26 +42,40 @@
       button:hover {
         background-color: #9caf88;
       }
+      .sub {
+        margin-left: 1px;
+      }
+      input {
+        margin-right: 1px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <h1>Clothing Categories</h1>
       <ul>
-        <li>T-Shirt/Top</li>
-        <li>Trouser</li>
-        <li>Pullover</li>
-        <li>Dress</li>
-        <li>Coat</li>
-        <li>Sandal</li>
-        <li>Shirt</li>
-        <li>Sneaker</li>
-        <li>Bag</li>
-        <li>Ankle boot</li>
+        <a href=""> <li>T-Shirt/Top</li></a>
+        <a href=""><li>Trouser</li></a>
+        <a href=""><li>Pullover</li></a>
+        <a href=""> <li>Dress</li></a>
+        <a href=""> <li>Coat</li></a>
+        <a href=""><li>Sandal</li></a>
+        <a href=""> <li>Shirt</li></a>
+        <a href=""> <li>Sneaker</li></a>
+        <a href=""><li>Bag</li></a>
+        <a href=""> <li>Ankle boot</li></a>
         <!-- Add more categories as needed -->
       </ul>
-      <button onclick="manualAdd()">Manually Add</button>
-      <button onclick="location.href='ui.html'">Back to Home</button>
+      <div class="bottom">
+        <button>
+          <form action="">
+            <input type="file" />
+            <button class="sub" type="submit">Submit</button>
+          </form>
+        </button>
+        <button onclick="manualAdd()">Manually Add</button>
+        <button onclick="location.href='ui.html'">Back to Home</button>
+      </div>
     </div>
     <script>
       function manualAdd() {

@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Results</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #343131;
-            color: #EEDF7A;
-        }
-        h1 {
-            font-size: 30px;
-        }
-        button {
-            border: none;
-            border-radius: 4px;
-            transition: opacity 0.15s;
-            padding: 15px 20px;
-            margin: 20px;
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #A04747;
-            color: #EEDF7A;
-        }
-        button:hover {
-            background-color: #EEDF7A;
-            color: #A04747;
-            opacity: 0.8;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #dfe6da;
+      }
+      h1 {
+        font-size: 30px;
+      }
+      button {
+        border: none;
+        border-radius: 4px;
+        transition: opacity 0.15s;
+        padding: 15px 20px;
+        margin: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #cbd5c0;
+      }
+      button:hover {
+        background-color: #9caf88;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Results</h1>
-        <p id="resultMessage"></p>
-        <button onclick="location.href='ui.html'">Back to Home</button>
+      <h1>Results</h1>
+      <p id="resultMessage"></p>
+      <button onclick="location.href='upload.html'">Back</button>
+
+      <button onclick="location.href='ui.html'">Back to Home</button>
     </div>
 
     <script>
-        // This script can be used to display the result dynamically if needed.
-        // Placeholder for result message based on previous page's evaluation.
-        const resultMessage = localStorage.getItem("clothingResult") || "No result available.";
-        document.getElementById("resultMessage").innerText = resultMessage;
+      // This script can be used to display the result dynamically if needed.
+      // Placeholder for result message based on previous page's evaluation.
+      const resultMessage =
+        localStorage.getItem("clothingResult") || "No result available.";
+      document.getElementById("resultMessage").innerText = resultMessage;
 
-        // You can clear the result after displaying it.
-        localStorage.removeItem("clothingResult");
+      // You can clear the result after displaying it.
+      localStorage.removeItem("clothingResult");
     </script>
-</body>
+  </body>
 </html>
