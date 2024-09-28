@@ -51,15 +51,14 @@
   <body>
     <div class="container">
       <h1>Upload Your Image</h1>
-      <form onsubmit="evaluateClothing(); return false;">
-        <input type="file" id="imageUpload" accept="image/*" required />
-        <button type="submit">Submit</button>
+      <form action="/upload_temp" method="post" enctype="multipart/form-data">
+        <input type="file" id="imageUpload" accept="image/*" name="file" />
+        <form action="">
+          <button type="submit">Result</button>
+        </form>
       </form>
 
-      <button class="result" onclick="location.href='results.html'">
-        Result
-      </button>
-      <button onclick="location.href='ui.html'">Back to Home</button>
+      <button onclick="location.href='/ui'">Back to Home</button>
     </div>
 
     <script>
