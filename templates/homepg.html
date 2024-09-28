@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartClothes - Check Before You Buy</title>
+    <style>
+      :root {
+        --primary-color: #758467; /* Deep Olive */
+        --secondary-color: #819171; /* Muted Green */
+        --accent-color: #9caf88; /* Soft Green */
+        --light-color: #cbd5c0; /* Light Grey-Green */
+        --background-color: #dfe6da; /* Pale Sage */
+        --text-color: #333; /* Dark Text */
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        font-weight: bold;
+      }
+
+      header p {
+        margin: 0;
+        font-size: 1.2em;
+      }
+
+      main {
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .intro {
+        margin-bottom: 50px;
+      }
+
+      .intro h2 {
+        font-size: 2em;
+        color: var(--primary-color);
+      }
+
+      .intro p {
+        font-size: 1.2em;
+        line-height: 1.6em;
+        color: var(--text-color);
+      }
+
+      .buttons {
+        margin-top: 30px;
+      }
+
+      .buttons a {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        margin: 0 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .buttons a:hover {
+        background-color: var(--accent-color);
+      }
+
+      .info-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .info-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        text-align: left;
+      }
+
+      .info-card h3 {
+        color: var(--primary-color);
+        margin-top: 0;
+      }
+
+      .info-card p {
+        color: var(--text-color);
+        line-height: 1.5em;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SmartWardrobe</h1>
+      <p>Check Before You Buy</p>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h2>What is SmartWardrobe?</h2>
+        <p>
+          SmartWardrobe helps you make informed shopping decisions by checking
+          if you already own similar clothing items. Upload an image of the
+          clothes you're considering purchasing, and we’ll let you know if
+          something like it already exists in your wardrobe.
+        </p>
+        <div class="buttons">
+          <a href="ui.html">Get Started</a>
+          <a href="#">Learn More</a>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <div class="info-card">
+          <h3>Upload & Check</h3>
+          <p>
+            Simply upload a photo of the item you're thinking of buying. We’ll
+            compare it to your existing wardrobe and tell you if you already
+            have something similar.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>Save Money</h3>
+          <p>
+            Stop buying duplicate items! By using SmartClothes, you can avoid
+            spending money on clothes you already own and make smarter
+            purchasing decisions.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>Shop Sustainably</h3>
+          <p>
+            Reduce your environmental footprint by shopping mindfully.
+            SmartClothes encourages thoughtful consumption by helping you
+            recognize what you already have.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 SmartClothes. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
