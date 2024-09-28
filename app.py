@@ -37,7 +37,7 @@ def ui():
 # Categories route
 @app.route('/categories')
 def categories():
-    predefined_categories = ['shirt', 'pant', 'hat', 'shoes', 'dress', 'jacket', 'glasses', 'bag', 'watch', 'scarf']
+    predefined_categories = ['shirt', 'pant', 'hat', 'shoes', 'dress', 'jacket', 'glasses', 'bag', 'watch', 'scarf','temporary']
     return render_template('categories.html', categories=predefined_categories)
 
 # Dynamic route to view images by category
@@ -68,6 +68,26 @@ def upload_file():
         db.session.commit()
 
         return redirect(url_for('categories'))
+    return render_template('upload.html')
+
+@app.route('/upload_temp', methods = ['POST'])
+def upload_temp():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return 'No file part'
+        file = request.files['file']
+        if file.filename == '':
+            return 'No selected file'
+
+        file_data = file.read()
+
+        category = 'temporary'  # Use your actual ML model to classify the image
+
+        new_image = Image(data=file_data, filename=file.filename, category=category)
+        db.session.add(new_image)
+        db.session.commit()
+
+        # return redirect(url_for('upload'))
     return render_template('upload.html')
 
 @app.route('/upload/<string:category>', methods=['POST'])
@@ -160,6 +180,37 @@ def delete_image(image_id):
         # Handle any issues during the delete operation
         db.session.rollback()
         return 'There was a problem deleting the image.'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  uploading
+
+
+
+
+
+
+
+
+
+
 # Running the application
 if __name__ == '__main__':
     app.run(debug=True)
