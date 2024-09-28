@@ -54,23 +54,22 @@
     <div class="container">
       <h1>Clothing Categories</h1>
       <ul>
-        <a href=""> <li>T-Shirt/Top</li></a>
-        <a href=""><li>Trouser</li></a>
-        <a href=""><li>Pullover</li></a>
-        <a href=""> <li>Dress</li></a>
-        <a href=""> <li>Coat</li></a>
-        <a href=""><li>Sandal</li></a>
-        <a href=""> <li>Shirt</li></a>
-        <a href=""> <li>Sneaker</li></a>
-        <a href=""><li>Bag</li></a>
-        <a href=""> <li>Ankle boot</li></a>
-        <!-- Add more categories as needed -->
+        <a href="/category/tshirt"> <li>T-Shirt/Top</li></a>
+        <a href="/category/trouser"><li>Trouser</li></a>
+        <a href="/category/pullover"><li>Pullover</li></a>
+        <a href="/category/dress"> <li>Dress</li></a>
+        <a href="/category/coat"> <li>Coat</li></a>
+        <a href="/category/sandal"><li>Sandal</li></a>
+        <a href="/category/shirt"> <li>Shirt</li></a>
+        <a href="/category/sneaker"> <li>Sneaker</li></a>
+        <a href="/category/bag"><li>Bag</li></a>
+        <a href="/category/ankleboot"> <li>Ankle boot</li></a>
       </ul>
       <div class="bottom">
         <button>
-          <form action="">
-            <input type="file" />
-            <button class="sub" type="submit">Submit</button>
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <button class="sub" type="submit">Upload</button>
           </form>
         </button>
         <button onclick="manualAdd()">Manually Add</button>
