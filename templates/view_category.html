@@ -95,6 +95,11 @@
       button:hover {
         background-color: #819171;
       }
+      input {
+        background-color: #9caf88;
+        padding: 10px;
+        margin: 20px;
+      }
 
       @media (max-width: 768px) {
         .category-title {
@@ -115,7 +120,9 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="category-title">{{ category }} Category</h1>
+      <div class="nav">
+        <h1 class="category-title">{{ category }} Category</h1>
+      </div>
       <div class="image-grid">
         {% for image in images %}
         <div class="image-item">
@@ -125,14 +132,29 @@
           <div class="image-info">
             <p>{{ image.filename }}</p>
             <div class="actions">
-              <button onclick="favoriteImage()">Favorite</button>
-              <button onclick="dislikeImage()">Don't Like</button>
-              <button onclick="imageDeleted()">Delete</button>
+              <form method="POST" action="/favorite/{{ image.id }}">
+                <button type="submit">Favorite</button>
+              </form>
+              <form method="POST" action="/dislike/{{ image.id }}">
+                <button type="submit">Don't Like</button>
+              </form>
+              <form method="POST" action="/delete/{{ image.id }}">
+                <button type="submit">Delete</button>
+              </form>
             </div>
           </div>
         </div>
+
         {% endfor %}
       </div>
+      <h2>Add Manually</h2>
+      <form
+        action="/upload/{{ category }}"
+        method="post"
+        enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button class="sub">Upload</button>
+      </form>
     </div>
 
     <script>
@@ -144,9 +166,56 @@
         alert("Image marked as disliked.");
       }
 
-      function imageDeleted() {
-        alert("Image successfully deleted!");
-      }
+      document.querySelectorAll('form[action^="/delete"]').forEach((form) => {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault(); // Prevent default action only for delete forms
+          const formAction = form.action;
+
+          try {
+            const response = await fetch(formAction, {
+              method: "POST",
+            });
+
+            if (response.ok) {
+              const result = await response.text();
+              alert(result);
+
+              // Remove the image container
+              form.closest(".image-item").remove();
+            } else {
+              alert("Failed to delete the image.");
+            }
+          } catch (error) {
+            console.error("Error deleting image:", error);
+            alert("Error deleting image.");
+          }
+        });
+      });
+
+      document
+        .querySelectorAll('form[action^="/favorite"], form[action^="/dislike"]')
+        .forEach((form) => {
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent default action
+
+            const formAction = form.action;
+            try {
+              const response = await fetch(formAction, {
+                method: "POST",
+              });
+
+              if (response.ok) {
+                const result = await response.text();
+                alert(result);
+              } else {
+                alert("Failed to perform the action.");
+              }
+            } catch (error) {
+              console.error("Error:", error);
+              alert("An error occurred.");
+            }
+          });
+        });
     </script>
   </body>
 </html>

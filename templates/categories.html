@@ -28,6 +28,7 @@
         width: 200px;
         text-decoration: none;
         font-size: 20px;
+        color: black;
       }
       button {
         border: none;
@@ -72,18 +73,8 @@
             <button class="sub" type="submit">Upload</button>
           </form>
         </button>
-        <button onclick="manualAdd()">Manually Add</button>
         <button onclick="location.href='ui.html'">Back to Home</button>
       </div>
     </div>
-    <script>
-      function manualAdd() {
-        const category = prompt("Please enter the category of clothing:");
-        if (category) {
-          alert(`${category} has been added manually.`);
-          // You can implement additional functionality here to actually save this data if needed.
-        }
-      }
-    </script>
   </body>
 </html>
