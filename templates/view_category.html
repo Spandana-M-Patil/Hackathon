@@ -124,6 +124,10 @@
           width: 80px;
         }
       }
+      button a {
+        text-decoration: none;
+        font-size: 20px;
+      }
     </style>
   </head>
   <body>
@@ -136,9 +140,10 @@
         <div class="image-item">
           <img
             src="data:image/jpeg;base64,{{ image.data | b64encode }}"
-            alt="{{ image.filename }}" />
+            alt="{{ image.name or image.filename}}" />
           <div class="image-info">
-            <p>{{ image.filename }}</p>
+            <p>{{ image.name or image.filename}}</p>
+            <p>Worn Count: {{ image.wear_count }}</p>
             <div class="actions">
               <form method="POST" action="/favorites/{{ image.id }}">
                 <button type="submit">Favorite</button>
@@ -148,6 +153,11 @@
               </form>
               <form method="POST" action="/delete/{{ image.id }}">
                 <button type="submit">Delete</button>
+              </form>
+              <form
+                action="{{ url_for('mark_as_worn', image_id=image.id) }}"
+                method="POST">
+                <button type="submit">Mark as Worn</button>
               </form>
             </div>
           </div>
@@ -160,6 +170,7 @@
         method="post"
         enctype="multipart/form-data">
         <input type="file" name="file" />
+        <input type="text" name="image_name" placeholder="Enter image name" />
         <button class="sub">Upload</button>
       </form>
       <button><a href="/categories">Back</a></button>

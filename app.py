@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from sqlalchemy import desc
 import base64
 
 
@@ -14,9 +16,12 @@ class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.LargeBinary, nullable=False)  
     filename = db.Column(db.String(150), nullable=False)
+    name = db.Column(db.String(255), nullable=True)
     category = db.Column(db.String(50), nullable=False)  # Category field for predefined categories
     is_favorite = db.Column(db.Boolean, default=False)
     is_disliked = db.Column(db.Boolean, default=False)
+    wear_count = db.Column(db.Integer, default=0)
+    upload_time = db.Column(db.DateTime, default=datetime.utcnow)
 
 with app.app_context():
     db.create_all()
@@ -32,7 +37,17 @@ def index():
 
 @app.route('/ui')
 def ui():
-    return render_template('ui.html')
+    total_items = Image.query.count()
+
+    total_items = Image.query.count()  # Count all items
+    # Example of fetching most worn items, adjust to your logic
+    most_worn = {image.name or image.filename: image.wear_count for image in Image.query.order_by(Image.wear_count.desc()).limit(3).all()}
+    least_worn = {image.name or image.filename: image.wear_count for image in Image.query.order_by(Image.wear_count).limit(3).all()}
+    recent_items = [image.name or image.filename for image in Image.query.order_by(Image.id.desc()).limit(3).all()]
+
+    return render_template('ui.html', total_items=total_items, 
+                           most_worn=most_worn, least_worn=least_worn, 
+                           recent_items=recent_items)
 
 # Categories route
 @app.route('/categories')
@@ -53,6 +68,8 @@ def upload_file():
         if 'file' not in request.files:
             return 'No file part'
         file = request.files['file']
+        image_name = request.form['image_name']
+
         if file.filename == '':
             return 'No selected file'
 
@@ -63,7 +80,7 @@ def upload_file():
         category = classify_image(file_data)  # Use your actual ML model to classify the image
 
         # Store the binary data, filename, and category in the database
-        new_image = Image(data=file_data, filename=file.filename, category=category)
+        new_image = Image(data=file_data, name=image_name, filename=file.filename, category=category)
         db.session.add(new_image)
         db.session.commit()
 
@@ -95,6 +112,7 @@ def upload_image(category):
     if 'file' not in request.files:
         return 'No file part'
     file = request.files['file']
+    image_name = request.form['image_name']
     if file.filename == '':
         return 'No selected file'
 
@@ -102,7 +120,7 @@ def upload_image(category):
     file_data = file.read()
 
     # Store the binary data, filename, and category in the database
-    new_image = Image(data=file_data, filename=file.filename, category=category)
+    new_image = Image(data=file_data, name=image_name, filename=file.filename, category=category)
     db.session.add(new_image)
     db.session.commit()
 
@@ -181,34 +199,18 @@ def delete_image(image_id):
         db.session.rollback()
         return 'There was a problem deleting the image.'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#  uploading
-
-
-
-
-
-
-
-
+@app.route('/mark_as_worn/<int:image_id>', methods=['POST'])
+def mark_as_worn(image_id):
+    # Find the image by ID
+    image = Image.query.get_or_404(image_id)
+    
+    # Increment the wear count
+    image.wear_count += 1
+    
+    # Save changes to the database
+    db.session.commit()
+    
+    return redirect(url_for('view_category', category_name=image.category))
 
 
 # Running the application
