@@ -4,6 +4,7 @@ from keras.preprocessing.image import img_to_array, load_img
 from datetime import datetime
 from sqlalchemy import desc
 import base64
+import numpy as np
 from io import BytesIO
 from PIL import Image as PILImage 
 import os
