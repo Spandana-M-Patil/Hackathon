@@ -70,6 +70,9 @@
       input {
         margin-right: 1px;
       }
+      .extraname {
+        padding: 10px;
+      }
     </style>
   </head>
   <body>
@@ -103,6 +106,11 @@
         <button>
           <form action="/upload" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
+            <input
+              type="text"
+              name="image_name"
+              placeholder="Enter image name"
+              class="extraname" />
             <button class="sub" type="submit">Upload</button>
           </form>
         </button>

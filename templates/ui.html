@@ -86,30 +86,31 @@
   <body>
     <div class="container">
       <div class="navigator">
-
         <a href="/"><div class="nav">About</div></a>
         <a href="/categories"><div class="nav">Categories</div></a>
         <a href="/upload"><div class="nav">Add new Item</div></a>
         <a href=""><div class="nav">Profile</div></a>
-        
       </div>
       <h2>Welcome username! Your wardrobe Overview</h2>
       <div class="wardrobe">
         <div class="item">
           Total items: <br />
-          30
+          {{ total_items }}
+          <!-- Dynamic count -->
         </div>
         <div class="worn">
           Most worn: <br />
-          Black Jeans (10 wears), Red T-shirts (7 wears)
+          {% for item, count in most_worn.items() %} {{ item }} ({{ count }}
+          wears), {% endfor %}
         </div>
         <div class="leastWorn">
           Least worn: <br />
-          Blue Jeans (0 wears), Grey T-shirts (1 wear)
+          {% for item, count in least_worn.items() %} {{ item }} ({{ count }}
+          wears), {% endfor %}
         </div>
         <div class="recent">
           Recently Added: <br />
-          Blue Hoodie, White Sneakers
+          {% for item in recent_items %} {{ item }}, {% endfor %}
         </div>
       </div>
     </div>
