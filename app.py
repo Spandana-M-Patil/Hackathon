@@ -4,7 +4,6 @@ from datetime import datetime
 from sqlalchemy import desc
 import base64
 
-
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///category.db'
