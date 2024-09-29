@@ -1,6 +1,6 @@
 # SmartWardrobe
 
-This Flask application allows users to upload images, categorize them using a machine learning model, and manage their wardrobe items. Users can view their uploaded images by category, mark items as favorites or dislikes, and manage wear counts for their items.
+This Flask application allows users to upload images, categorize them using a `machine learning model`, and manage their wardrobe items. Users can view their uploaded images by category, mark items as favorites or dislikes, and manage wear counts for their items.
 
 ## Features
 
