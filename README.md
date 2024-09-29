@@ -22,8 +22,8 @@ This Flask application allows users to upload images, categorize them using a ma
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Spandana-M-Patil/Hackathon.git
+   cd Hackathon
    ```
 2. **Install dependencies**
    Make sure you have Python 3.x installed, then create a virtual environment and install the required packages:
