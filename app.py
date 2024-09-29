@@ -1,15 +1,23 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from keras.preprocessing.image import img_to_array, load_img
 from datetime import datetime
 from sqlalchemy import desc
 import base64
-
+import numpy as np
+from io import BytesIO
+from PIL import Image as PILImage 
+import os
+from keras.models import load_model
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///category.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+model_path = os.path.join('Model', 'my_model.h5')
+model = load_model(model_path)
 
 # define image model
 class Image(db.Model):
@@ -129,12 +137,20 @@ def upload_image(category):
 
 # Simulated ML model function for classifying images into predefined categories
 def classify_image(image_data):
-    # Replace this with actual ML model logic
-    predefined_categories = ['shirt', 'pant', 'hat', 'shoes', 'dress', 'jacket', 'glasses', 'bag', 'watch', 'scarf']
+    # Convert the binary data to a PIL image
+    image = PILImage.open(BytesIO(image_data))
+    
+    # Preprocess the image as needed
+    image = image.convert('L')  # Convert to grayscale if needed
+    image = image.resize((28, 28))  # Resize to model's input size
+    image_array = img_to_array(image) / 255.0  # Normalize the pixel values
+    image_array = image_array.reshape(1, 28, 28, 1)  # Reshape for the model
 
-    # Simulate categorization (you can replace this with real logic)
-    return 'dress'  # For now, always return 'shirt' as the category
-
+    # Make predictions
+    predictions = model.predict(image_array)
+    predicted_class = np.argmax(predictions, axis=1)[0]
+    
+    return predicted_class
 # Route to view favorite images
 @app.route('/favorites')
 def view_favorites():
