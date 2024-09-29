@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartWardrobe Login</title>
+    <style>
+      /* Same styles as before */
+      :root {
+        --primary-color: #758467;
+        --secondary-color: #819171;
+        --accent-color: #9CAF88;
+        --light-color: #CBD5C0;
+        --background-color: #DFE6DA;
+        --text-color: #333;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .login-container {
+        background-color: var(--primary-color);
+        padding: 40px;
+        border-radius: 10px;
+        width: 350px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h2 {
+        color: var(--light-color);
+        margin-bottom: 30px;
+        font-size: 24px;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--light-color);
+        color: var(--text-color);
+        font-size: 16px;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: var(--accent-color);
+      }
+      .forgot-password {
+        display: block;
+        margin-top: 15px;
+        color: var(--light-color);
+        text-decoration: none;
+      }
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <script>
+      function login() {
+        // Get the username from the form
+        const username = document.getElementById('username').value;
+        
+        // Store the username in localStorage
+        localStorage.setItem('username', username);
+        
+        // Redirect to the profile page
+        window.location.href = 'profile.html';
+      }
+    </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login to SmartWardrobe</h2>
+      <form onsubmit="event.preventDefault(); login();">
+        <input type="text" id="username" placeholder="Username" required /><br />
+        <input type="password" placeholder="Password" required /><br />
+        <button type="submit">Login</button>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </form>
+    </div>
+  </body>
+</html>

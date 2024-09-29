@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <style>
+      :root {
+        --primary-color: #758467;
+        --background-color: #DFE6DA;
+        --text-color: #333;
+        --light-color: #CBD5C0;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .profile-container {
+        background-color: var(--primary-color);
+        padding: 40px;
+        border-radius: 10px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .profile-pic {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: var(--light-color);
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+      p {
+        color: white;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-container">
+      <!-- Random Profile Picture (placeholder image) -->
+      <img
+        src="https://media.istockphoto.com/id/1316947194/vector/messenger-profile-icon-on-white-isolated-background-vector-illustration.jpg?s=612x612&w=0&k=20&c=1iQ926GXQTJkopoZAdYXgU17NCDJIRUzx6bhzgLm9ps="
+        alt="Profile Picture"
+        class="profile-pic"
+      />
+      <!-- Random Name -->
+      <h2>John</h2>
+    </div>
+  </body>
+</html>
